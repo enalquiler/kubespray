@@ -130,7 +130,7 @@ dns_mode: kubedns
 # Can be docker_dns, host_resolvconf or none
 resolvconf_mode: docker_dns
 # Deploy netchecker app to verify DNS resolve as an HTTP service
-deploy_netchecker: false
+deploy_netchecker: true
 # Ip address of the kubernetes skydns service
 skydns_server: "{{ kube_service_addresses|ipaddr('net')|ipaddr(3)|ipaddr('address') }}"
 skydns_server_secondary: "{{ kube_service_addresses|ipaddr('net')|ipaddr(4)|ipaddr('address') }}"
@@ -172,10 +172,10 @@ k8s_image_pull_policy: IfNotPresent
 dashboard_enabled: true
 
 # Monitoring apps for k8s
-efk_enabled: false
+efk_enabled: true
 
 # Helm deployment
-helm_enabled: false
+helm_enabled: true
 
 # Istio deployment
 istio_enabled: false
@@ -187,11 +187,11 @@ registry_enabled: false
 # registry_disk_size: "10Gi"
 
 # Local volume provisioner deployment
-local_volume_provisioner_enabled: false
+local_volume_provisioner_enabled: true
 # local_volume_provisioner_namespace: "{{ system_namespace }}"
-# local_volume_provisioner_base_dir: /mnt/disks
-# local_volume_provisioner_mount_dir: /mnt/disks
-# local_volume_provisioner_storage_class: local-storage
+local_volume_provisioner_base_dir: /mnt/disks
+local_volume_provisioner_mount_dir: /mnt/disks
+local_volume_provisioner_storage_class: local-storage
 
 # CephFS provisioner deployment
 cephfs_provisioner_enabled: false
@@ -206,7 +206,7 @@ cephfs_provisioner_enabled: false
 # cephfs_provisioner_deterministic_names: true
 
 # Nginx ingress controller deployment
-ingress_nginx_enabled: false
+ingress_nginx_enabled: true
 # ingress_nginx_host_network: false
 # ingress_nginx_nodeselector:
 #   node-role.kubernetes.io/master: "true"
@@ -226,10 +226,10 @@ cert_manager_enabled: false
 # cert_manager_namespace: "cert-manager"
 
 # Add Persistent Volumes Storage Class for corresponding cloud provider ( OpenStack is only supported now )
-persistent_volumes_enabled: false
+persistent_volumes_enabled: true
 
 # Make a copy of kubeconfig on the host that runs Ansible in {{ inventory_dir }}/artifacts
-# kubeconfig_localhost: false
+kubeconfig_localhost: true
 # Download kubectl onto the host that runs Ansible in {{ bin_dir }}
 # kubectl_localhost: false
 
